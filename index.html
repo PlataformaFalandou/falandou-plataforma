@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Falandou - Você Falandou Inglês HOJE!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Tela de Login -->
+    <div id="loginScreen" class="login-screen">
+        <div class="login-container">
+            <div class="logo-section">
+                <h1 class="logo">Falandou</h1>
+                <p class="logo-subtitle">Você Falandou Inglês HOJE!</p>
+            </div>
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="registration" class="form-label">Registro do Aluno</label>
+                    <input type="text" id="registration" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="form-label">Senha</label>
+                    <input type="password" id="password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn--primary btn--full-width">Entrar</button>
+                <div id="loginError" class="error-message hidden"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Tela de Plano Expirado -->
+    <div id="expiredPlanScreen" class="expired-plan-screen hidden">
+        <div class="expired-plan-container">
+            <div class="expired-plan-content">
+                <div class="expired-plan-icon">
+                    ⚠️
+                </div>
+                <h1 class="expired-plan-title">Plano Expirado</h1>
+                <p class="expired-plan-message">
+                    Seu plano de acesso à plataforma Falandou expirou. 
+                    Entre em contato conosco para renovar seu plano e continuar seus estudos.
+                </p>
+                
+                <div class="contact-info">
+                    <h3>Informações de Contato</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <span class="contact-icon">💬</span>
+                            <div class="contact-text">
+                                <strong>WhatsApp:</strong>
+                                <a href="https://wa.me/5511971419047" target="_blank">+55 11 97141-9047</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="expired-plan-actions">
+                    <button id="logoutFromExpiredBtn" class="btn btn--outline">
+                        ← Voltar ao Login
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Aplicação Principal -->
+    <div id="mainApp" class="main-app hidden">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">Aqui seus estudos ficam todos organizados!</h1>
+                <div class="header-user">
+                    <span id="userName" class="user-name"></span>
+                    <button id="logoutBtn" class="btn btn--outline btn--sm">Sair</button>
+                </div>
+            </div>
+        </header>
+
+        <nav class="nav-tabs">
+            <button class="nav-tab active" data-tab="dashboard">📊 Dashboard</button>
+            <button class="nav-tab" data-tab="activities">📚 Atividades</button>
+            <button class="nav-tab" data-tab="estudos">📖 Estudos</button>
+            <!-- <button class="nav-tab" data-tab="curso">🎥 Curso</button> -->
+            <button class="nav-tab" data-tab="schedule">📅 Cronograma</button>
+            <button class="nav-tab" data-tab="profile">👤 Perfil</button>
+        </nav>
+
+        <main class="main-content">
+            <!-- Dashboard Tab -->
+            <div id="dashboard" class="tab-content active">
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>Bem vindo(a)!</h3>
+                            <p id="welcomeMessage"></p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>Créditos Disponíveis</h3>
+                            <div class="credits-info">
+                                <div class="credit-item">
+                                    <span class="credit-label">Aulas de 25min:</span>
+                                    <span id="credits25" class="credit-value">0</span>
+                                </div>
+                                <div class="credit-item">
+                                    <span class="credit-label">Aulas de 50min:</span>
+                                    <span id="credits50" class="credit-value">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>Status do Plano</h3>
+                            <div class="plan-info">
+                                <span id="planStatus" class="status status--success">Ativo</span>
+                                <p>Expira em: <span id="planExpiry"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activities Tab -->
+            <div id="activities" class="tab-content">
+                <div class="activities-container">
+                    <h2>📚 Atividades</h2>
+                    
+                    <div class="featured-activity">
+                        <h3>🌟 Atividade da Semana: Praticando a litura em voz alta</h3>
+                        
+                        <div class="story-section">
+                            <h4>A Cidade Costeira</h4>
+                            <div class="story-text">
+                                <p>Cheguei a uma pequena cidade costeira escondida entre falésias e mar, o tipo de lugar que não aparecia em nenhum mapa que eu carregava. Desde o início, tudo parecia ligeiramente diferente, como se as ruas se inclinassem muito perto da água e o ar sugerisse sal e fumaça.</p>
+                                
+                                <p>Minha primeira descoberta foi durante o almoço: os locais apreciavam olhos de peixe como uma iguaria. Eles os retiravam com pequenas colheres como se fosse a coisa mais natural do mundo. Tentei manter meu rosto calmo, mas meu estômago tinha outras opiniões.</p>
+                                
+                                <p>As pessoas, no entanto, me surpreenderam ainda mais do que a comida. Toda vez que cumprimentava alguém, eles não apertavam minha mão, mas pressionavam levemente a testa contra a minha enquanto fechavam os olhos. O gesto parecia estranho no início, quase íntimo demais, mas logo entendi como sua forma de dizer que a confiança era mais forte que as palavras.</p>
+                                
+                                <p>O momento mais engraçado aconteceu por acidente. Eu estava caminhando perto do porto quando tropecei em uma corda e caí em uma pilha de redes de pesca. Algumas crianças explodiram em risadas, me chamando de 'viajante caranguejo dançante'. Em vez de me ofender, eu ri também, emaranhado como alguma criatura marinha ridícula. Essa risada quebrou a barreira entre nós.</p>
+                                
+                                <p>As pessoas me convidaram para suas conversas, suas cozinhas, seu ritmo de vida. Mantive anotações de tudo, já que a cidade parecia guardar segredos. Sua comida, suas saudações, até suas piadas tinham uma intensidade curiosa, como se vivessem mais perto da borda das coisas. Não descobri todos os mistérios, mas saí com a sensação de que viajar não é sobre ver tudo, mas sobre deixar os momentos estranhos grudarem em você como sal na pele.</p>
+                            </div>
+                        </div>
+
+                        <div class="quiz-section">
+                            <h4>📝 Responda este Rápido Quiz</h4>
+                            <div class="quiz-container">
+                                <!-- Pergunta 1 -->
+                                <div class="question">
+                                    <h5>1. O que os locais da cidade costeira apreciavam como iguaria?</h5>
+                                    <div class="options">
+                                        <button class="option-btn" data-question="1" data-answer="a">A) Camarões grelhados</button>
+                                        <button class="option-btn" data-question="1" data-answer="b">B) Olhos de peixe</button>
+                                        <button class="option-btn" data-question="1" data-answer="c">C) Algas marinhas</button>
+                                        <button class="option-btn" data-question="1" data-answer="d">D) Conchas do mar</button>
+                                    </div>
+                                </div>
+
+                                <!-- Pergunta 2 -->
+                                <div class="question">
+                                    <h5>2. Como as pessoas da cidade cumprimentavam os visitantes?</h5>
+                                    <div class="options">
+                                        <button class="option-btn" data-question="2" data-answer="a">A) Apertando as mãos</button>
+                                        <button class="option-btn" data-question="2" data-answer="b">B) Acenando com as mãos</button>
+                                        <button class="option-btn" data-question="2" data-answer="c">C) Pressionando a testa contra a testa</button>
+                                        <button class="option-btn" data-question="2" data-answer="d">D) Abraçando</button>
+                                    </div>
+                                </div>
+
+                                <!-- Pergunta 3 -->
+                                <div class="question">
+                                    <h5>3. Como as crianças chamaram o viajante depois que ele caiu nas redes?</h5>
+                                    <div class="options">
+                                        <button class="option-btn" data-question="3" data-answer="a">A) Peixe perdido</button>
+                                        <button class="option-btn" data-question="3" data-answer="b">B) Viajante caranguejo dançante</button>
+                                        <button class="option-btn" data-question="3" data-answer="c">C) Marinheiro desajeitado</button>
+                                        <button class="option-btn" data-question="3" data-answer="d">D) Estrangeiro engraçado</button>
+                                    </div>
+                                </div>
+
+                                <!-- Pergunta 4 -->
+                                <div class="question">
+                                    <h5>4. Onde o viajante tropecou e caiu?</h5>
+                                    <div class="options">
+                                        <button class="option-btn" data-question="4" data-answer="a">A) Na praia</button>
+                                        <button class="option-btn" data-question="4" data-answer="b">B) No mercado</button>
+                                        <button class="option-btn" data-question="4" data-answer="c">C) Perto do porto</button>
+                                        <button class="option-btn" data-question="4" data-answer="d">D) Na praça central</button>
+                                    </div>
+                                </div>
+
+                                <!-- Pergunta 5 -->
+                                <div class="question">
+                                    <h5>5. Segundo o viajante, viajar é sobre:</h5>
+                                    <div class="options">
+                                        <button class="option-btn" data-question="5" data-answer="a">A) Ver todos os pontos turísticos</button>
+                                        <button class="option-btn" data-question="5" data-answer="b">B) Fazer muitas fotografias</button>
+                                        <button class="option-btn" data-question="5" data-answer="c">C) Deixar os momentos estranhos grudarem como sal na pele</button>
+                                        <button class="option-btn" data-question="5" data-answer="d">D) Aprender novos idiomas</button>
+                                    </div>
+                                </div>
+
+                                <div class="quiz-actions">
+                                    <button id="checkAnswers" class="btn btn--primary">Verificar Respostas</button>
+                                    <button id="resetQuiz" class="btn btn--secondary">Reiniciar Quiz</button>
+                                </div>
+
+                                <div id="quizResults" class="quiz-results hidden">
+                                    <h4>Resultados do Quiz</h4>
+                                    <div id="scoreDisplay" class="score-display"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Estudos Tab -->
+            <div id="estudos" class="tab-content">
+                <div class="estudos-container">
+                    <h2>📖 Material de Estudos</h2>
+                    
+                    <div class="category-tabs">
+                        <button class="category-tab active" data-category="gramatica">Iniciante</button>
+                        <button class="category-tab" data-category="vocabulario">Elementar</button>
+                        <button class="category-tab" data-category="conversacao">Intermediário</button>
+                        <button class="category-tab" data-category="exercicios">Intermediário-Superior</button>
+                        <button class="category-tab" data-category="complementar">Avançado</button>
+                    </div>
+
+                    <div class="study-materials-grid">
+                        <!-- Elementar -->
+                        <div id="gramatica" class="material-category active">
+                            <h3>A1</h3>
+                            <div class="material-list">
+                                <div class="material-item">
+                                    <div class="material-info">
+                                        <h4>Gramática Básica - Verbos</h4>
+                                        <p>Conjugação de verbos em inglês</p>
+                                    </div>
+                                    <button class="btn btn--primary btn--sm material-btn" data-file-id="1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms">Ver PDF</button>
+                                </div>
+                                <div class="material-item">
+                                    <div class="material-info">
+                                        <h4>Present Simple vs Present Continuous</h4>
+                                        <p>Diferenças e usos dos tempos verbais</p>
+                                    </div>
+                                    <button class="btn btn--primary btn--sm material-btn" data-file-id="1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE3upms">Ver PDF</button>
+                                </div>
+                                <div class="material-item">
+                                    <div class="material-info">
+                                        <h4>Artigos e Preposições</h4>
+                                        <p>Uso correto de artigos definidos e indefinidos</p>
+                                    </div>
+                                    <button class="btn btn--primary btn--sm material-btn" data-file-id="1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE4upms">Ver PDF</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Elementar Materials -->
+                        <div id="vocabulario" class="material-category">
+                            <h3>A2</h3>
+                            <div class="material-list">
+                                <div class="material-item">
+                                    <div class="material-info">
+                                        <h4>Vocabulário Essencial - Família</h4>
+                                        <p>Palavras relacionadas à família</p>
+                                    </div>
+                                    <button class="btn btn--primary btn--sm material-btn" data-file-id="1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE5upms">Ver PDF</button>
+                                </div>
+                                <div class="material-item">
+                                    <div class="material-info">
+                                        <h4>Daily Routines Vocabulary</h4>
+                                        <p>Vocabulário sobre rotina diária</p>
+                                    </div>
+                                    <button class="btn btn--primary btn--sm material-btn" data-file-id="1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE6upms">Ver PDF</button>
+                                </div>
+                                <div class="material-item">
+                                    <div class="material-info">
+                                        <h4>Food and Drinks</h4>
+                                        <p>Vocabulário sobre comidas e bebidas</p>
+                                    </div>
+                                    <button class="btn btn--primary btn--sm material-btn" data-file-id="1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE7upms">Ver PDF</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Intermediário Materials -->
+                        <div id="conversacao" class="material-category">
+                            <h3>B1</h3>
+                            <div class="material-list">
+                                <div class="material-item">
+                                    <div class="material-info">
+                                        <h4>Conversação - Apresentações</h4>
+                                        <p>Frases úteis para se apresentar</p>
+                                    </div>
+                                    <button class="btn btn--primary btn--sm material-btn" data-file-id="1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE8upms">Ver PDF</button>
+                                </div>
+                                <div class="material-item">
+                                    <div class="material-info">
+                                        <h4>Small Talk Essentials</h4>
+                                        <p>Conversas informais e quebra-gelo</p>
+                                    </div>
+                                    <button class="btn btn--primary btn--sm material-btn" data-file-id="1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE9upms">Ver PDF</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Intermediário-Superior Material -->
+                        <div id="exercicios" class="material-category">
+                            <h3>B2</h3>
+                            <div class="material-list">
+                                <div class="material-item">
+                                    <div class="material-info">
+                                        <h4>Exercícios de Gramática</h4>
+                                        <p>Atividades práticas para fixar o conteúdo</p>
+                                    </div>
+                                    <button class="btn btn--primary btn--sm material-btn" data-file-id="1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE10pms">Ver PDF</button>
+                                </div>
+                                <div class="material-item">
+                                    <div class="material-info">
+                                        <h4>Reading Comprehension</h4>
+                                        <p>Textos com questões de interpretação</p>
+                                    </div>
+                                    <button class="btn btn--primary btn--sm material-btn" data-file-id="1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE11pms">Ver PDF</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Avançado Material -->
+                        <div id="complementar" class="material-category">
+                            <h3>C1</h3>
+                            <div class="material-list">
+                                <div class="material-item">
+                                    <div class="material-info">
+                                        <h4>Phrasal Verbs Guide</h4>
+                                        <p>Guia completo de phrasal verbs</p>
+                                    </div>
+                                    <button class="btn btn--primary btn--sm material-btn" data-file-id="1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE12pms">Ver PDF</button>
+                                </div>
+                                <div class="material-item">
+                                    <div class="material-info">
+                                        <h4>Idioms and Expressions</h4>
+                                        <p>Expressões idiomáticas mais usadas</p>
+                                    </div>
+                                    <button class="btn btn--primary btn--sm material-btn" data-file-id="1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE13pms">Ver PDF</button>
+                                </div>
+                            </div>
+                        </div>
+                         <!-- Proficiente Material -->
+                        <div id="complementar" class="material-category">
+                            <h3>C1</h3>
+                            <div class="material-list">
+                                <div class="material-item">
+                                    <div class="material-info">
+                                        <h4>Phrasal Verbs Guide</h4>
+                                        <p>Guia completo de phrasal verbs</p>
+                                    </div>
+                                    <button class="btn btn--primary btn--sm material-btn" data-file-id="1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE12pms">Ver PDF</button>
+                                </div>
+                                <div class="material-item">
+                                    <div class="material-info">
+                                        <h4>Idioms and Expressions</h4>
+                                        <p>Expressões idiomáticas mais usadas</p>
+                                    </div>
+                                    <button class="btn btn--primary btn--sm material-btn" data-file-id="1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE13pms">Ver PDF</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PDF Viewer -->
+                    <div id="pdfViewer" class="pdf-viewer hidden">
+                        <div class="pdf-header">
+                            <h4 id="pdfTitle">Documento PDF</h4>
+                            <button id="closePdf" class="btn btn--secondary btn--sm">✖ Fechar</button>
+                        </div>
+                        <div class="pdf-content">
+                            <iframe id="pdfFrame" src="" frameborder="0"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Curso Tab -->
+            <div id="curso" class="tab-content">
+                <div class="curso-container">
+                    <h2>🎥 Curso de Inglês</h2>
+                    
+                    <div class="course-progress">
+                        <div class="progress-header">
+                            <h3>Seu Progresso</h3>
+                            <div class="progress-stats">
+                                <span id="completedLessons">0</span> de <span id="totalLessons">0</span> aulas concluídas
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div id="progressFill" class="progress-fill"></div>
+                        </div>
+                    </div>
+
+                    <div class="course-modules" id="courseModules">
+                        <!-- Course modules will be populated by JavaScript -->
+                    </div>
+
+                    <!-- Video Modal -->
+                    <div id="videoModal" class="video-modal hidden">
+                        <div class="modal-overlay"></div>
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 id="modalVideoTitle">Título do Vídeo</h3>
+                                <button id="closeVideoModal" class="btn btn--secondary btn--sm">✖ Fechar</button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="video-container">
+                                    <iframe id="videoFrame" src="" frameborder="0" 
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                            allowfullscreen></iframe>
+                                </div>
+                                <div class="video-info">
+                                    <p id="modalVideoDescription">Descrição do vídeo</p>
+                                    <div class="video-meta">
+                                        <span id="modalVideoDuration">Duração</span> • 
+                                        <span id="modalVideoDifficulty" class="difficulty-badge">Nível</span>
+                                    </div>
+                                </div>
+                                <div class="video-actions">
+                                    <button id="markCompleteBtn" class="btn btn--primary">Marcar como Concluído</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Schedule Tab -->
+            <div id="schedule" class="tab-content">
+                <div class="schedule-container">
+                    <h2>📅 Cronograma Semanal</h2>
+                    <div id="scheduleList" class="schedule-list">
+                        <!-- Schedule items will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Tab -->
+            <div id="profile" class="tab-content">
+                <div class="profile-container">
+                    <h2>👤 Perfil do Usuário</h2>
+                    <div class="card">
+                        <div class="card__body">
+                            <div class="profile-info">
+                                <div class="info-item">
+                                    <label>Nome:</label>
+                                    <span id="profileName"></span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Email:</label>
+                                    <span id="profileEmail"></span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Matrícula:</label>
+                                    <span id="profileRegistration"></span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Status do Plano:</label>
+                                    <span id="profilePlanStatus" class="status status--success"></span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Expiry:</label>
+                                    <span id="profilePlanExpiry"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
